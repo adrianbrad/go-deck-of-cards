@@ -12,7 +12,7 @@ func ExampleCard() {
 	fmt.Println(Card{Rank: Five, Suit: Spades})
 	fmt.Println(Card{Rank: Ten, Suit: Hearts})
 	fmt.Println(Card{Rank: Jack, Suit: Clubs})
-	fmt.Println(Card{Rank: Ace, Suit: Diamonds})
+	fmt.Println(Card{Rank: King, Suit: Diamonds})
 
 	// Output:
 	// AD
@@ -20,7 +20,7 @@ func ExampleCard() {
 	// 5S
 	// 10H
 	// JC
-	// AD
+	// KD
 }
 
 func TestNew(t *testing.T) {
@@ -42,37 +42,45 @@ func TestNew(t *testing.T) {
 
 func TestDefaultSort(t *testing.T) {
 	cards := New(DefaultSort)
-	exp := Card{Clubs, Two}
+	exp := Card{Clubs, Ace}
 
 	if cards[0] != exp {
-		t.Error("Expected 2C as first card. Received: ", cards)
+		t.Error("Expected AC as first card. Received: ", cards[0])
 	}
 }
 
 func TestSort(t *testing.T) {
 	cards := New(Sort(Less))
-	exp := Card{Clubs, Two}
+	exp := Card{Clubs, Ace}
 
 	if cards[0] != exp {
-		t.Error("Expected 2C as first card. Received: ", cards)
+		t.Error("Expected AC as first card. Received: ", cards)
 	}
 }
 
 func TestSortReverse(t *testing.T) {
 	cards := New(Sort(Reverse))
-	exp := Card{Spades, Ace}
+	exp := Card{Spades, King}
 
 	if cards[0] != exp {
-		t.Error("Expected AS as first card. Received: ", cards)
+		t.Error("Expected KS as first card. Received: ", cards)
 	}
 }
 
 func TestReverseSort(t *testing.T) {
 	cards := New(ReverseSort)
-	exp := Card{Spades, Ace}
-
+	exp := Card{Spades, King}
+	fmt.Println(int(King))
+	fmt.Println(int(cards[0].Rank))
+	fmt.Println(cards[0])
+	fmt.Println(len(ranks))
+	fmt.Println(ranks)
+	fmt.Println(exp, cards[0])
+	fmt.Println(exp, cards[0])
+	fmt.Println(exp == cards[0])
+	fmt.Println(exp == cards[0])
 	if cards[0] != exp {
-		t.Error("Expected AS as first card. Received: ", cards)
+		t.Error("Expected KS as first card. Received: ", cards)
 	}
 }
 
@@ -107,7 +115,7 @@ func TestFilter(t *testing.T) {
 }
 
 func TestDeck(t *testing.T) {
-	cards := New(Deck(3))
+	cards := New(Amount(3))
 
 	if (len(cards)) != 52*3 {
 		t.Errorf("Expected %d cards received %d cards", 52*3, len(cards))
