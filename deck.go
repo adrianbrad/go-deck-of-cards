@@ -26,6 +26,12 @@ func New(opts ...func(Deck) Deck) Deck {
 	return cards
 }
 
+func (deck *Deck) DealCard() Card {
+	var card Card
+	card, *deck = (*deck)[0], (*deck)[1:]
+	return card
+}
+
 //Deck options
 
 func Sort(less func(cards Deck) func(i, j int) bool) func(Deck) Deck {
