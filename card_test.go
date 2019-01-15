@@ -9,17 +9,31 @@ import (
 func ExampleCard() {
 	fmt.Println(Card{Rank: Ace, Suit: Diamonds})
 	fmt.Println(Card{Rank: Two, Suit: Clubs})
+	fmt.Println(Card{Rank: Three, Suit: Clubs})
+	fmt.Println(Card{Rank: Four, Suit: Clubs})
 	fmt.Println(Card{Rank: Five, Suit: Spades})
+	fmt.Println(Card{Rank: Six, Suit: Hearts})
+	fmt.Println(Card{Rank: Seven, Suit: Hearts})
+	fmt.Println(Card{Rank: Eight, Suit: Hearts})
+	fmt.Println(Card{Rank: Nine, Suit: Hearts})
 	fmt.Println(Card{Rank: Ten, Suit: Hearts})
 	fmt.Println(Card{Rank: Jack, Suit: Clubs})
+	fmt.Println(Card{Rank: Queen, Suit: Clubs})
 	fmt.Println(Card{Rank: King, Suit: Diamonds})
 
 	// Output:
 	// AD
 	// 2C
+	// 3C
+	// 4C
 	// 5S
+	// 6H
+	// 7H
+	// 8H
+	// 9H
 	// 10H
 	// JC
+	// QC
 	// KD
 }
 
